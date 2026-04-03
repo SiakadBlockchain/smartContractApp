@@ -66,3 +66,49 @@ WALLET CONNECTION
 3. avalanche network join (Jika di CLI Lain)
 
 # Membangun Smart Contract
+
+1. Menggunakan HardHat+Solidity untuk membuat Smart Contract
+2. npm init -y (Inialisasi Node Package Manager)
+3. npm install --save-dev hardhat
+4. npx hardhat --init
+> Version hardhat-3
+> Path : .
+> ESM Projects : true
+5. npm install --save-dev "@types/node@^22.8.5" "typescript@~5.8.0" << Otomatis
+> Seteleah hardhat --init akan membuat folder hardhat beserta isinya memuat harhat.config.ts yang harus dikonfigurasi ulang sesuai dengan private key pada file .env dan juga rpc url avalance
+6. npm i dotenv ethers (Manual tanpa menggunakan toolbox)
+7. tambahkan folder contracts (file contracts yang akan dibuat) dan folder script (file deploy.ts)
+8. avalanche blockchain deploy siakadChain (lakukan deploy ulang jika jaringan berlajan di vm id bukan di rpc url avalance) 
+9. npx hardhat compile
+> Perintah Uji Coba Smart Contract Untuk Cek RPC Valid atau tidak | {"result":"0x..."} > Valid
+> curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' ^ -H "content-type:application/json;" ^ http://127.0.0.1:9654/ext/bc/LtfgTv2tY6f3PUefYWjEaUXcqBr93wT5YYLDPD1EtZzdjP98L/rpc
+10. npx hardhat run scripts/deploy.ts --network siakad
+> Jaringan network wajib di start terlebih dahulu
+> Contract deployed to: 0x4Ac1d98D9cEF99EC6546dEd4Bd550b0b287aaD6D
+> Contract deployed to: 0xA4cD3b0Eb6E5Ab5d8CE4065BcCD70040ADAB1F00
+> Deploy Kontrak Selesai
+
+# Daftar Perintah Avalanche
+> avalanche blockchain describe siakadChain > (Cek Private Key (Ewoq)) / Detail Jaringan
+> avalanche blockhain list > (Cek RPC URL)
+> avalanche network status > (Cek RPC URL)
+> avalanche network start > (Start Jaringan)
+> avalanche network stop > (Stop Jaringan)
+> avalanche blockchain deploy siakadChain > (Deploy Jaringan Blockchain)
+> pkill avalanchego (Untuk Menghentikan Paksa Proses Avalanche yang berjalan)
+
+# Instalasi IPFS
+
+1. wget https://dist.ipfs.tech/kubo/v0.28.0/kubo_v0.28.0_linux-amd64.tar.gz
+2. tar -xvzf kubo_v0.28.0_linux-amd64.tar.gz
+3. cd kubo
+4. sudo bash install.sh
+5. ipfs daemon
+> Buat server backend yang mengelola upload file pdf ke IPFS untuk mendapatkan CID
+> Contoh format valid file yang berhasil diupload
+> {
+  > "filename": "tes.pdf",
+  > "cid": "Qma9sF4T5mwDyr6bRCv71kVKFPVpisCkmCAcdh5w7JgGHv",
+  > "ipfs_url": "https://ipfs.io/ipfs/Qma9sF4T5mwDyr6bRCv71kVKFPVpisCkmCAcdh5w7JgGHv"
+> }
+> Link Akses Lokal : http://127.0.0.1:8080/ipfs/Qma9sF4T5mwDyr6bRCv71kVKFPVpisCkmCAcdh5w7JgGHv

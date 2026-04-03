@@ -1,0 +1,30 @@
+{
+  "name": "smartcontractapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiakadBlockchain/smartContractApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/SiakadBlockchain/smartContractApp/issues"
+  },
+  "homepage": "https://github.com/SiakadBlockchain/smartContractApp#readme",
+  "devDependencies": {
+    "@types/node": "^22.19.15",
+    "hardhat": "^3.2.0",
+    "typescript": "~5.8.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "ethers": "^6.16.0"
+  }
+}
