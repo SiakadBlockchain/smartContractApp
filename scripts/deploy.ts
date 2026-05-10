@@ -1,14 +1,23 @@
 import { ethers } from "ethers";
 import hre from "hardhat";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 async function main() {
-  const provider = new ethers.JsonRpcProvider(
-    "http://127.0.0.1:9654/ext/bc/LtfgTv2tY6f3PUefYWjEaUXcqBr93wT5YYLDPD1EtZzdjP98L/rpc"
-  );
+  const RPC_URL = process.env.RPC_URL;
+  
+  const provider = new ethers.JsonRpcProvider(RPC_URL);
 
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
+  if (!process.env.PRIVATE_KEY) {
+    throw new Error("PRIVATE_KEY tidak ditemukan di file .env");
+  }
 
-  const artifact = await hre.artifacts.readArtifact("IjazahStorage");
+  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+
+  console.log("Deploying contract with account:", wallet.address);
+
+  const artifact = await hre.artifacts.readArtifact("DiplomaStorage");
 
   const factory = new ethers.ContractFactory(
     artifact.abi,
@@ -16,11 +25,23 @@ async function main() {
     wallet
   );
 
-  const contract = await factory.deploy();
+  console.log("Deploying DiplomaStorage...");
 
+  const contract = await factory.deploy();
   await contract.waitForDeployment();
 
-  console.log("Contract deployed to:", await contract.getAddress());
+  const contractAddress = await contract.getAddress();
+
+  console.log("-----------------------------------------------");
+  console.log("DiplomaStorage deployed!");
+  console.log("Contract Address  :", contractAddress);
+  console.log("Network RPC       :", RPC_URL);
+  console.log("Deployer          :", wallet.address);
+  console.log("-----------------------------------------------");
+
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error("Error : ", error);
+  process.exitCode = 1;
+});

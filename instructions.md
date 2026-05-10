@@ -5,6 +5,7 @@
 3. Smart Contract Solidity
 4. Publik Verifikasi Via C-Chain
 5. Backend API
+6. Frontend
 
 # Software & Dependensi Wajib
 
@@ -86,7 +87,18 @@ WALLET CONNECTION
 > Jaringan network wajib di start terlebih dahulu
 > Contract deployed to: 0x4Ac1d98D9cEF99EC6546dEd4Bd550b0b287aaD6D
 > Contract deployed to: 0xA4cD3b0Eb6E5Ab5d8CE4065BcCD70040ADAB1F00
+> Contract deployed to: 0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407
 > Deploy Kontrak Selesai
+11. Contract Deployed
+> -----------------------------------------------
+> DiplomaStorage deployed!
+> Contract Address  : 0xe336d36FacA76840407e6836d26119E1EcE0A2b4
+> Network RPC       : http://127.0.0.1:9654/ext/bc/LtfgTv2tY6f3PUefYWjEaUXcqBr93wT5YYLDPD1EtZzdjP98L/rpc
+> Deployer          : 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+> -----------------------------------------------
+12. Cara cek Jumlah Transaksi dan block di jaringan Blockchain
+> curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByHash", "params":["0xa97aaef84ce1442cbf28baebc1267d59ff8f34dc8aacac2c235a57a681fcf3c6"], "id":1 }' -H "Content-Type: application/json" http://127.0.0.1:9654/ext/bc/LtfgTv2tY6f3PUefYWjEaUXcqBr93wT5YYLDPD1EtZzdjP98L/rpc
+> Output : {"jsonrpc":"2.0","id":1,"result":"0xd"}
 
 # Daftar Perintah Avalanche
 > avalanche blockchain describe siakadChain > (Cek Private Key (Ewoq)) / Detail Jaringan
@@ -97,7 +109,7 @@ WALLET CONNECTION
 > avalanche blockchain deploy siakadChain > (Deploy Jaringan Blockchain)
 > pkill avalanchego (Untuk Menghentikan Paksa Proses Avalanche yang berjalan)
 
-# Instalasi IPFS
+# Instalasi IPFS (Daemon)
 
 1. wget https://dist.ipfs.tech/kubo/v0.28.0/kubo_v0.28.0_linux-amd64.tar.gz
 2. tar -xvzf kubo_v0.28.0_linux-amd64.tar.gz
