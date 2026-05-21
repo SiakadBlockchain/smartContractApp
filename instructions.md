@@ -124,3 +124,9 @@ WALLET CONNECTION
   > "ipfs_url": "https://ipfs.io/ipfs/Qma9sF4T5mwDyr6bRCv71kVKFPVpisCkmCAcdh5w7JgGHv"
 > }
 > Link Akses Lokal : http://127.0.0.1:8080/ipfs/Qma9sF4T5mwDyr6bRCv71kVKFPVpisCkmCAcdh5w7JgGHv
+
+# Cek tinggi block di jaringan blockchain
+
+> curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' ^ -H "content-type:application/json;" ^ http://127.0.0.1:9654/ext/bc/LtfgTv2tY6f3PUefYWjEaUXcqBr93wT5YYLDPD1EtZzdjP98L/rpc
+
+> curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' ^ -H "content-type:application/json;" ^ http://127.0.0.1:9654/ext/bc/kmz4SKkBUGxtdVRqH84MWxJ8GGvkFpgHJTF75ZV65Sd5g6faD/rpc
